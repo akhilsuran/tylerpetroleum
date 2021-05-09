@@ -19,7 +19,19 @@
   <label for="diesel">diesel</label>
   <input type="radio" id="Petrol" name="gender" value="Petrol">
   <label for="Petrol">Petrol</label> <br>
+  <div id="radioGroup">
+    <span id="Whichoneofthesescientistsmostinspiresyou_0" class="deque-radio" aria-labelledby="curie"></span>
+    <span id="curie" >Marie Curie</span>
 
+    <span id="Whichoneofthesescientistsmostinspiresyou_1" class="deque-radio" aria-labelledby="goodall"></span>
+    <span id="goodall" >Jane Goodall</span>
+
+    <span id="Whichoneofthesescientistsmostinspiresyou_2" class="deque-radio" aria-labelledby="franklin"></span>
+    <span id="franklin" >Rosalind Franklin</span>
+
+    <span id="Whichoneofthesescientistsmostinspiresyou_3" class="deque-radio" aria-labelledby="lamarr"></span>
+    <span id="lamarr" >Hedy Lamarr</span>
+  </div>
   <label class="container">Available for full Time
     <input type="checkbox"  name="fulltime">
     <span class="checkmark"></span>
@@ -51,7 +63,7 @@
       <div *ngIf="i.withDriver==true">
         With Driver available
       </div>
-      <button>Edit</button>
+      <button (click)="edit(i)">Edit</button>
       <button (click)="delete(i)">Delete</button>
     </div>
   </div>

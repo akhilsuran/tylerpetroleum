@@ -10,16 +10,30 @@ export class AppComponent {
   state:any;
   vehicleNo:any;
   vehicle:any="eg:"
+  index=0
   constructor(){
     setInterval(()=>{
       this.vehicle=this.state+this.vehicleNo
     },200)
   }
   submit(form:any){
+    form.value.index=this.index+1
     console.log(form.value)
     this.Data.push(form.value)
+    this.vehicleNo=null;
+    this.state=null;
+    this.index=this.index+1
   }
   delete(i:any){
-    console.log(i.id)
+    let index =i.index;
+    if (index !== -1) {
+      this.Data.splice(index, 1);
+  }  
+    console.log(this.Data[0])
   }
+  edit(i:any)
+{
+  this.vehicleNo=i.vehicleNo;
+  this.state=i.state;
+}
 }
