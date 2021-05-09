@@ -1,0 +1,58 @@
+<div class="card col-12">
+<form #dataForm="ngForm">
+  <title>Vehicle Number</title>
+  <input type="text" [(ngModel)]="vehicleNo" name="vehicleNo">
+  <title>State</title>
+  <select [(ngModel)]="state" name="state">
+    <option value="KL">Kerala</option>
+    <option value="TN">Tamil Nadu</option>
+    <option value="TS">Telugana</option>
+  </select>
+  <br>
+  <h4>Vehicle NO:{{vehicle}}</h4>
+  <h5>Vehicle Type</h5>
+  <!-- <fieldset id="group1">
+    <input type="radio" value="diesel" name="group1"> <label for="diesel">diesel</label>
+    <input type="radio" value="petrol" name="group1"> <label for="Petrol">Petrol</label>
+  </fieldset> -->
+  <input type="radio" id="diesel" name="gender" value="diesel">
+  <label for="diesel">diesel</label>
+  <input type="radio" id="Petrol" name="gender" value="Petrol">
+  <label for="Petrol">Petrol</label> <br>
+
+  <label class="container">Available for full Time
+    <input type="checkbox"  name="fulltime">
+    <span class="checkmark"></span>
+  </label>
+  <label class="container">Available with Drive
+    <input type="checkbox"  name="withDriver">
+    <span class="checkmark"></span>
+  </label>
+  <!-- <title>Available for full Time</title>
+  <input type="checkbox" name="fulltime">
+  <title>Available with Driver</title>
+  <input type="checkbox" name="withDriver"> -->
+  <br>
+  <button  (click)="submit(dataForm)" class="btn-primary">
+    save
+  </button>
+</form>
+</div>
+<hr>
+<div class="card col-12">
+
+  <div>
+    <h3>Output</h3>
+    <div *ngFor="let i of Data">
+      vehicle No:{{i.state}} {{i.vehicleNo}}<br>
+      <div *ngIf="i.fulltime==true">
+        full Time Available
+      </div>
+      <div *ngIf="i.withDriver==true">
+        With Driver available
+      </div>
+      <button>Edit</button>
+      <button (click)="delete(i)">Delete</button>
+    </div>
+  </div>
+</div>
