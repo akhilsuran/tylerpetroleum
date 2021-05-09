@@ -1,58 +1,130 @@
-<div class="card col-12">
-<form #dataForm="ngForm">
-  <title>Vehicle Number</title>
-  <input type="text" [(ngModel)]="vehicleNo" name="vehicleNo">
-  <title>State</title>
-  <select [(ngModel)]="state" name="state">
-    <option value="KL">Kerala</option>
-    <option value="TN">Tamil Nadu</option>
-    <option value="TS">Telugana</option>
-  </select>
-  <br>
-  <h4>Vehicle NO:{{vehicle}}</h4>
-  <h5>Vehicle Type</h5>
-  <!-- <fieldset id="group1">
-    <input type="radio" value="diesel" name="group1"> <label for="diesel">diesel</label>
-    <input type="radio" value="petrol" name="group1"> <label for="Petrol">Petrol</label>
-  </fieldset> -->
-  <input type="radio" id="diesel" name="gender" value="diesel">
-  <label for="diesel">diesel</label>
-  <input type="radio" id="Petrol" name="gender" value="Petrol">
-  <label for="Petrol">Petrol</label> <br>
+<div class="container">
 
-  <label class="container">Available for full Time
-    <input type="checkbox"  name="fulltime">
-    <span class="checkmark"></span>
-  </label>
-  <label class="container">Available with Drive
-    <input type="checkbox"  name="withDriver">
-    <span class="checkmark"></span>
-  </label>
-  <!-- <title>Available for full Time</title>
-  <input type="checkbox" name="fulltime">
-  <title>Available with Driver</title>
-  <input type="checkbox" name="withDriver"> -->
-  <br>
-  <button  (click)="submit(dataForm)" class="btn-primary">
-    save
-  </button>
-</form>
+<h1>Vehicle Registration</h1>
+</div>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+
+    </div>
+    <div class="col-4">
+      <div class="card" style="padding: 20px; ">
+        <form #dataForm="ngForm">
+          <div class="row">
+            <div class="col-6">
+              <div class="mb-3">
+                <label class="form-label">Vehicle Number </label>
+                <input type="text" [(ngModel)]="vehicleNo" class="form-control" placeholder="Vehicle No:"
+                  name="vehicleNo">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="mb-3">
+                <label class="form-label">State </label>
+                <select [(ngModel)]="state" name="state" class="form-select">
+                  <option value="KL">Kerala</option>
+                  <option value="TN">Tamil Nadu</option>
+                  <option value="TS">Telugana</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+
+
+          <br>
+          <h6>Vehicle No: {{vehicle}}</h6><br>
+          <h6>Vehicle Type</h6>
+
+          <div class="row">
+            <div class="col-6">
+              <div class="form-check">
+
+                <input type="radio" [(ngModel)]="diesel" id="diesel" name="fuel" value="diesel"
+                  class="form-check-input">
+                <label for="diesel" class="form-check-label">Diesel</label>
+              </div>
+            </div>
+            <div class="col-6">
+              <input type="radio" [(ngModel)]="petrol" id="Petrol" name="fuel" value="Petrol" class="form-check-input">
+              <label for="Petrol" class="form-check-label">Petrol</label>
+            </div>
+          </div>
+          <h6>Availablity</h6>
+          <div class="row">
+            <div class="col-6">
+              <div class="form-check">
+
+                <input type="checkbox" [(ngModel)]="fulltime" name="fulltime" class="form-check-input">
+                <label class="form-check-label">Available for full Time
+
+                </label>
+              </div>
+            </div>
+            <div class="col-6">
+
+
+              <div class="form-check">
+                <input type="checkbox" [(ngModel)]="driver" name="withDriver" class="form-check-input">
+
+                <label class="form-check-label">Available with Drive
+
+                </label>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- <title>Available for full Time</title>
+       <input type="checkbox" name="fulltime">
+       <title>Available with Driver</title>
+       <input type="checkbox" name="withDriver"> -->
+          <br>
+          <button (click)="submit(dataForm)" class="btn btn-primary">
+            save
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="col-4">
+
+    </div>
+  </div>
+
+
 </div>
 <hr>
-<div class="card col-12">
 
-  <div>
-    <h3>Output</h3>
-    <div *ngFor="let i of Data">
-      vehicle No:{{i.state}} {{i.vehicleNo}}<br>
-      <div *ngIf="i.fulltime==true">
-        full Time Available
+
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+
+    </div>
+    <div class="col-4">
+      <div class="card" style="padding: 20px;">
+        <h3>Output</h3>
+
+        <div *ngFor="let i of Data">
+          <br>
+          <label class="form-label">Vehicle Number: </label> {{i.state}} {{i.vehicleNo}}<br>
+          <!-- vehicle type:<h6 *ngIf="i." -->
+          <label class="form-label">Fuel Type: </label>{{i.fuel}}
+          <div *ngIf="i.fulltime==true">
+            <label class="form-label"> full Time Available </label>
+          </div>
+          <div *ngIf="i.withDriver==true">
+            <label class="form-label"> With Driver available</label>
+          </div>
+          <br>
+          <button (click)="edit(i)" class="btn btn-primary">Edit</button> &nbsp;
+          <button (click)="delete(i)" class="btn btn-danger">Delete</button>
+        </div>
       </div>
-      <div *ngIf="i.withDriver==true">
-        With Driver available
-      </div>
-      <button (click)="edit(i)">Edit</button>
-      <button (click)="delete(i)">Delete</button>
+    </div>
+    <div class="col-4">
+
     </div>
   </div>
 </div>
