@@ -7,9 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   Data:any=[];
-  state:any;
-  vehicleNo:any;
-  vehicle:any="eg:"
+  state:any=" "
+  vehicleNo:any=" "
+  vehicle:any=" "
   index=0
   constructor(){
     setInterval(()=>{
@@ -25,11 +25,11 @@ export class AppComponent {
     this.index=this.index+1
   }
   delete(i:any){
-    let index =i.index;
+    let index =i.index-1;
     if (index !== -1) {
       this.Data.splice(index, 1);
   }  
-    console.log(this.Data[0])
+    console.log(i.index)
   }
   edit(i:any)
 {
